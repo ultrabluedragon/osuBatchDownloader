@@ -1,0 +1,42 @@
+osuBeatmapDownloaderV2.0
+
+修改：
+       改进了命名规范，同时支持了'https://osu-pps.com/#/mania/maps','https://osusearch.com/'两个网站的信息抓取。
+       优化了用户体验，减少了需要输入的文字改成选项。
+       改进了代码，增加了函数的参数，同时将频繁调用字符串储存在了config/UrlFile.py中。
+       改进了输出文件的命名规范，将download_xml中用户的自定义的文件名称置于首写。
+
+
+osuBeatmapDownloaderV3.0
+
+新增：
+       实装了程序下载，现在可以使用Python下载器了。
+       经过程序下载的谱面将存储在beatmaps_xml中。
+
+已知错误：
+       输出在download_xml中的谱面下载url的txt文件命名可能会错误，不影响使用（毕竟这个文件只是单纯用来给下载器读）。
+
+更新预告
+       将在下版本支持异步下载，使得程序下载器可以同时下载数个谱面，加快速度。
+       增加提示音，下载完成时候提示。
+       增加谱面信息文件拼接功能，可以将多次筛选的结果合并为同一个文件。
+       增加谱面信息文件去重功能，选择需要去重的文件X，然后选择去掉的重复项文件Y（可以多选），可以生成X的谱面去重Y中的谱面的新文件。
+
+
+osuBeatmapDownloaderV3.1
+
+新增：
+       实装程序异步下载，下载完成提示音，拼接文件和文件去重
+
+修改：
+       PythondownloadLauncher.py新增一个可以控制同时下载文件数量的参数，可以在config/Setting.py中修改。
+       优化了一下注释和描述。
+       使用了新的库，requirements.txt的东西变多了。
+       改善Chrome下载器，减少操作步骤。
+
+osuBeatmapDownloaderV3.2
+
+移除：
+       移除了样例下载，现在可以直接下载到当前文件夹下的beatmap_xml文件夹中。
+
+       
