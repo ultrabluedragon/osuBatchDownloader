@@ -2,7 +2,6 @@ from pydantic import BaseSettings
 
 
 class Config(BaseSettings):
-
     WebSelection: int = 1
     DownloadStation: int = 2
     DownloadStyle: int = 0

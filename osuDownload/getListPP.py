@@ -19,11 +19,14 @@ def getBeatmapListPP(download_station: int, urls: list, search_url: str, url_nam
     driver.get(search_url)
 
     input('在网页上设置筛选参数，在此页面Enter开始爬取谱面（后面还有输入项）')
-    beatMapCounts = int(input('（输入整数）设置爬取谱面数量：（大范围筛选会导致去重后谱面数量大幅减少）'))
-    zoomRate = 8/beatMapCounts
+    beatMapCounts = input('（输入整数）设置爬取谱面数量：（大范围筛选会导致去重后谱面数量大幅减少）')
+    while beatMapCounts == '':
+        beatMapCounts = input('（输入整数）设置爬取谱面数量：（大范围筛选会导致去重后谱面数量大幅减少）')
+    beatMapCounts = int(beatMapCounts)
+    zoomRate = 8 / beatMapCounts
     print('正在爬取谱面信息，切勿关闭网页以及进行其他操作直到网页关闭为止')
     driver.execute_script(f"document.body.style.zoom='{zoomRate}'")
-    time.sleep(beatMapCounts/20)
+    time.sleep(beatMapCounts / 20)
 
     dom = etree.HTML(driver.page_source)
     link = dom.xpath('//*[@class="c-ljOvCE"]/a/@href')

@@ -17,11 +17,13 @@ def getBeatmapList(download_station: int, urls: list, search_url: str, url_name:
     options.add_experimental_option('useAutomationExtension', False)
     options.add_experimental_option('excludeSwitches', ['enable-automation', 'enable-logging'])
     driver = webdriver.Chrome(chrome_options=options)
-    
+
     driver.get(search_url)
 
     input('在网页上设置筛选参数（设置好要点一下search），在此页面Enter开始爬取谱面（后面还有一个要输入的参数）')
     elementNumber = input('（输入整数）设置爬取谱面数量：(X) *18倍，不可为0')
+    while elementNumber == '':
+        elementNumber = input('（输入整数）设置爬取谱面数量：(X) *18倍，不可为0')
     print('正在爬取谱面信息，切勿关闭网页以及进行其他操作直到网页关闭为止')
 
     for _ in range(int(elementNumber)):

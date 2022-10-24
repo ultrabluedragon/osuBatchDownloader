@@ -5,8 +5,8 @@ import os
 from tqdm import tqdm
 
 
-def chromedownloadLauncher(downloadPath: str, waitingTime: int, downloadStation: int, fileName: str, urls: list) -> None:
-
+def chromedownloadLauncher(downloadPath: str, waitingTime: int, downloadStation: int, fileName: str,
+                           urls: list) -> None:
     beatmap_id = pd.read_excel(f'./download_xml/{fileName}', sheet_name=0)['beatmap_id']
 
     option = webdriver.ChromeOptions()
@@ -30,7 +30,7 @@ def chromedownloadLauncher(downloadPath: str, waitingTime: int, downloadStation:
     driver.close()
 
     end_time = time.time()
-    print(f'耗时:{end_time - start_time},秒')
+    print(f'耗时:{int((end_time - start_time) // 60)}分:{int((end_time - start_time) % 60)}秒')
     successCounter = str(os.listdir(f'{downloadPath}'))
     print(
         f'下载成功{successCounter.count(".osz")}个谱面，下载失败{len(beatmap_id) - successCounter.count(".osz")}个谱面')

@@ -12,15 +12,14 @@ import os
 
 
 def init():
-
     path_save = 'download_xml'
     if not os.path.exists(path_save):
         os.makedirs(path_save)
-    path_save = 'beatmaps_xml'
+    path_save = 'beatmaps_save'
     if not os.path.exists(path_save):
         os.makedirs(path_save)
 
-    downloadPath = os.getcwd() + rf'\{path_save}'
+    downloadPath = os.path.join(os.getcwd(), path_save)
 
     engine = pyttsx3.init()
     engine.setProperty('rate', 120)
@@ -58,7 +57,8 @@ def init():
         elif Setting.DownloadStyle == 1:
             filename = getLocalFileName()
             pythonDownloadLauncher(fileName=filename,
-                                   fileNumber=Setting.fileNumber)
+                                   fileNumber=Setting.fileNumber,
+                                   path=downloadPath)
             engine.say('下载完成')
             engine.runAndWait()
 
@@ -69,7 +69,8 @@ def init():
         Concat()
 
     else:
-        print('错误的输入，请重新启动')
+        init()
 
 
-init()
+if __name__ == '__main__':
+    init()
